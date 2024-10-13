@@ -1,0 +1,137 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <!-- Page Header Start -->
+  <div
+    class="container-fluid page-header py-5 mb-5 wow fadeIn"
+    data-wow-delay="0.1s"
+    style="background-color: #f8f9fa; background-image: url('/img/mining6.png'); background-size: cover; background-position: center;"
+  >
+    <div class="container py-5">
+      <h1 class="display-4 animated slideInDown mb-4 text-white">
+        Appointment
+      </h1>
+      <nav aria-label="breadcrumb animated slideInDown">
+        <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item"><a href="#">Pages</a></li>
+          <li class="breadcrumb-item active text-white" aria-current="page">
+            Appointment
+          </li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+  <!-- Page Header End -->
+
+  <!-- Appointment Start -->
+  <div class="container-fluid py-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-lg-6 wow fadeIn" data-wow-delay="0.3s">
+          <h1 class="display-6 mb-5">
+            Partner with a Leading Investment Advisor
+          </h1>
+          <p class="mb-5">
+            At AfriNova, we specialize in connecting you with high-yield
+            investment opportunities across Africa. Our expertise and global
+            network ensure you get access to the best deals that align with your
+            growth objectives.
+          </p>
+          <div class="bg-light rounded p-3">
+            <div class="d-flex align-items-center bg-white rounded p-3">
+              <img
+                class="flex-shrink-0 rounded-circle me-3"
+                src="/img/phones.png"
+                alt=""
+              />
+              <h5 class="mb-0">Call Us: +256 700 372 842</h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+          <div class="bg-light rounded p-5">
+            <form id="appointment-form">
+              <div class="row g-3">
+                <div class="col-sm-6">
+                  <div class="form-floating">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="gname"
+                      name="gname"
+                      placeholder="Your Name"
+                      required
+                    />
+                    <label for="gname">Your Name</label>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-floating">
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="gmail"
+                      name="gmail"
+                      placeholder="Your Email"
+                      required
+                    />
+                    <label for="gmail">Your Email</label>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-floating">
+                    <textarea
+                      class="form-control"
+                      placeholder="Leave a message here"
+                      id="message"
+                      name="message"
+                      style="height: 80px"
+                      required></textarea>
+                    <label for="message"
+                      >Message: Include Phone Number and Email Address Please</label
+                    >
+                  </div>
+                </div>
+                <div class="col-12">
+                  <button class="btn btn-primary py-3 px-5" type="submit">
+                    Get Appointment
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Appointment End -->
+
+  <!-- EmailJS Integration -->
+  <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"
+  ></script>
+
+  <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function () {
+      emailjs.init("fG1l0RVERG9eRT9F7");
+
+      // Handle the form submission
+      const form = document.getElementById("appointment-form");
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        emailjs.sendForm("service_xc4kzmg", "template_3aw3azo", form).then(
+          function (response) {
+            alert("Message sent successfully!");
+            form.reset();
+          },
+          function (error) {
+            alert("Failed to send message. Please try again.");
+          }
+        );
+      });
+    });
+  </script>
+</BaseLayout>

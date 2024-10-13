@@ -1,0 +1,135 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import emailjs from "emailjs-com";
+---
+
+<BaseLayout>
+  <!-- Page Header Start -->
+  <div
+    class="container-fluid page-header py-5 mb-5 wow fadeIn"
+    data-wow-delay="0.1s"
+  >
+    <div class="container py-5">
+      <h1 class="display-4 animated slideInDown mb-4">Contact Us</h1>
+      <nav aria-label="breadcrumb animated slideInDown">
+        <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item"><a href="#">Pages</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Contact</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+  <!-- Page Header End -->
+
+  <!-- Contact Start -->
+  <div class="container-xxl py-5">
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+          <h1 class="display-6 mb-5">Contact Us</h1>
+          <p class="mb-5">
+            If you have any inquiries or need assistance, please don't hesitate
+            to contact us. We are here to help you!
+          </p>
+          <form id="contact-form">
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <div class="form-floating">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    name="name"
+                    placeholder="Your Name"
+                    required
+                  />
+                  <label for="name">Your Name</label>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-floating">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    name="email"
+                    placeholder="Your Email"
+                    required
+                  />
+                  <label for="email">Your Email</label>
+                </div>
+              </div>
+              <div class="col-sm-12">
+                <div class="form-floating">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="subject"
+                    name="subject"
+                    placeholder="Subject"
+                    required
+                  />
+                  <label for="subject">Subject</label>
+                </div>
+              </div>
+              <div class="col-sm-12">
+                <div class="form-floating">
+                  <textarea
+                    class="form-control"
+                    placeholder="Leave a message here"
+                    id="message"
+                    name="message"
+                    style="height: 100px"
+                    required></textarea>
+                  <label for="message"
+                    >Message: Include Contact Details too;</label
+                  >
+                </div>
+              </div>
+              <div class="col-sm-12">
+                <button class="btn btn-primary py-3 px-5" type="submit"
+                  >Send Message</button
+                >
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
+          <iframe
+            class="w-100 h-100"
+            style="min-height: 350px; border:0;"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1779202.1897581347!2d-82.07856448281921!3d27.994405829974037!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88c2c5142a5b121d%3A0x1ed429eac1c7f2a0!2sFlorida%2C%20USA!5e0!3m2!1sen!2sbd!4v1603794290143!5m2!1sen!2sbd"
+            allowfullscreen=""
+            aria-hidden="false"
+            tabindex="0"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Contact End -->
+  <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"
+  ></script>
+
+  <script type="text/javascript">
+    (function () {
+      emailjs.init("fG1l0RVERG9eRT9F7");
+    })();
+
+    const form = document.getElementById("contact-form");
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      // Send the form data to EmailJS
+      emailjs.sendForm("service_xc4kzmg", "template_3aw3azo", form).then(
+        function (response) {
+          alert("Message sent successfully!");
+          form.reset(); // Clear the form
+        },
+        function (error) {
+          alert("Failed to send message, please try again.");
+        }
+      );
+    });
+  </script>
+</BaseLayout>
